@@ -15,6 +15,7 @@ exlConfig = (defaultHakyllConfiguration "http://extralogical.net")
     }
 
 main = hakyllWithConfiguration exlConfig $ do
+    directory static "files"
     directory static "images"
     directory static "js"
     directory css "css"
@@ -38,6 +39,8 @@ main = hakyllWithConfiguration exlConfig $ do
     mapM_ (renderChain [ "templates/page.html"
                        , "templates/default.html" ] . createPage)
             [ "projects.html"
+            , "projects/mobile.md"
+            , "projects/papertrail.md"
             , "archives.md"
             , "about.md"
             , "about/notebooks.md"
