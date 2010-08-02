@@ -2,4 +2,4 @@
 title: Archives
 ---
 
-The archive will return soon.
+The archives will return soon.
