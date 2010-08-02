@@ -3,6 +3,7 @@ import Control.Arrow ((>>>))
 import Control.Monad (liftM, mapM_)
 
 import Text.Hakyll (hakyll, defaultHakyllConfiguration, hakyllWithConfiguration)
+import Text.Hakyll.Feed (FeedConfiguration (..), renderAtom)
 import Text.Hakyll.Render (renderChain, static, css)
 import Text.Hakyll.File (getRecursiveContents, directory)
 import Text.Hakyll.CreateContext (createPage, createListing)
@@ -35,6 +36,8 @@ main = hakyllWithConfiguration exlConfig $ do
     
     renderChain ["index.html", "templates/default.html"] index
     
+    renderAtom feedConfiguration $ take 5 articlePages
+    
     -- Some static pages.
     mapM_ (renderChain [ "templates/page.html"
                        , "templates/default.html" ] . createPage)
@@ -45,5 +48,13 @@ main = hakyllWithConfiguration exlConfig $ do
             , "about.md"
             , "about/notebooks.md"
             ]
+
+feedConfiguration :: FeedConfiguration
+feedConfiguration = FeedConfiguration
+    { feedUrl         = "articles.atom"
+    , feedTitle       = "Extralogical"
+    , feedDescription = "Logic and programming articles"
+    , feedAuthorName  = "Benedict Eastaugh"
+    }
 
 postManipulation = renderDate "published" "%B %e, %Y" "Date unknown"
