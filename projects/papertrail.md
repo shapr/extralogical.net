@@ -15,9 +15,9 @@ URLify
 ------
 
 [URLify][urlify] is a library extracted from Paper Trail for converting
-diacritical marks to unaccented equivalents, for ASCII-safe URI creation. It
-also includes a utility method to remove subtitles. URLify is a Ruby gem, so to
-install it just run this:
+diacritical marks to unaccented equivalents, to assist with ASCII-safe URI
+creation. It also includes a utility method to remove subtitles. URLify is a
+Ruby gem, so to install it just run this:
 
     gem install urlify
 
