@@ -45,7 +45,7 @@ del {text-decoration:line-through;}
 table {border-collapse:collapse; border-spacing:0;}
 :focus {outline:0;}
 
-article, section header {overflow:auto; clear:both; border-bottom:1px solid #e5e5e5; padding-bottom:1.5em;}
+article, section header {overflow:auto; clear:both; border-bottom:1px solid #e5e5e5; padding:1.5em 0;}
     article h1, article h2 {margin-right:3em;}
     .date {margin:1em 0 0 0; font-family:'Lucida Grande', Helvetica, Arial, sans-serif; font-size:12px;}        
     .modified-date {clear:both; margin-top:2em; font-style:italic;}
@@ -60,7 +60,7 @@ article, section header {overflow:auto; clear:both; border-bottom:1px solid #e5e
 
 section header {padding-bottom:0.5em;}
 
-#header {margin-bottom:1.5em; border-bottom:1px solid #e5e5e5; padding-top:1.5em;}
+#header {border-bottom:1px solid #e5e5e5; padding-top:1.5em;}
     #header .wrapper {position:relative;}
     #title {font-size:14px; margin-bottom:1.25em;}
     #title a, #navigation a {border-bottom:none;}
