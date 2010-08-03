@@ -18,7 +18,6 @@ exlConfig = (defaultHakyllConfiguration "http://extralogical.net")
 main = hakyllWithConfiguration exlConfig $ do
     directory static "files"
     directory static "images"
-    directory static "js"
     directory css "css"
     static "favicon.ico"
     
