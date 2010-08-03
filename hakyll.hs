@@ -31,7 +31,7 @@ main = hakyllWithConfiguration exlConfig $ do
     let index = createListing "index.html"
                              ["templates/item.html"]
                              (take 10 articlePages)
-                             [("title", Left "Logic and programming")]
+                             [("title", Left "Extralogical")]
     
     renderChain ["index.html", "templates/default.html"] index
     
