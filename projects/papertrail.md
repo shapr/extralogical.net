@@ -6,10 +6,10 @@ title: Paper Trail
 It's written in [Ruby on Rails][rails], and the [source code][source] is
 available on GitHub, licensed under the GPL.
 
-Some extremely rudimentary documentation is included in the `README` file, and
-I noted its intentions and shortcomings in an [introductory article][intro]
-(further mentions of it [have appeared since][more]). If you find any bugs,
-please let me know via the [GitHub issue tracker][bugs].
+Some rudimentary documentation is included in the `README` file, and I noted
+its intentions and shortcomings in an [introductory article][intro] (further
+mentions of it [have appeared since][more]). If you find any bugs, please let
+me know via the [GitHub issue tracker][bugs].
 
 URLify
 ------
