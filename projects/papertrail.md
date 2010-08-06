@@ -6,10 +6,10 @@ title: Paper Trail
 It's written in [Ruby on Rails][rails], and the [source code][source] is
 available on GitHub, licensed under the GPL.
 
-Some extremely rudimentary documentation is included in the `README` file, and
-I noted its intentions and shortcomings in an [introductory article][intro]
-(further mentions of it [have appeared since][more]). If you find any bugs,
-please let me know via the [GitHub issue tracker][bugs].
+Some rudimentary documentation is included in the `README` file, and I noted
+its intentions and shortcomings in an [introductory article][intro] (further
+mentions of it [have appeared since][more]). If you find any bugs, please let
+me know via the [GitHub issue tracker][bugs].
 
 URLify
 ------
@@ -17,9 +17,12 @@ URLify
 [URLify][urlify] is a library extracted from Paper Trail for converting
 diacritical marks to unaccented equivalents, to assist with ASCII-safe URI
 creation. It also includes a utility method to remove subtitles. URLify is a
-Ruby gem, so to install it just run this:
+Ruby gem, so to install it just run this (depending on your system
+configuration, you may have to `sudo`):
 
     gem install urlify
+
+URLify is released under the BSD license.
 
   [books]:  http://books.extralogical.net
   [rails]:  http://rubyonrails.org
