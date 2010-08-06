@@ -21,6 +21,8 @@ Ruby gem, so to install it just run this:
 
     gem install urlify
 
+URLify is released under the BSD license.
+
   [books]:  http://books.extralogical.net
   [rails]:  http://rubyonrails.org
   [source]: http://github.com/ionfish/papertrail
