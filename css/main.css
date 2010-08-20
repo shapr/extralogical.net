@@ -36,6 +36,8 @@ ul, ol {margin:0 0 1.25em 0;}
 ul {list-style:disc;}
 ol {list-style:decimal;}
     ul li, ol li {margin:0.25em 0;}
+    ul ol, ol ul, ul ul, ol ol {margin-left:2.5em;}
+    ol ul, ul ul {list-style:circle;}
 pre, code {font-family:Monaco, Courier, monospace; font-size:11px; line-height:1.8; color:#000;}
     pre {margin-bottom:1.5em; border:1px solid #e5e5e5; padding:0.5em 1em; background:#fafafa; white-space:pre-wrap;}
     code {background:#efefef;}
