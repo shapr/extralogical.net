@@ -20,6 +20,7 @@ main = hakyllWithConfiguration exlConfig $ do
     directory static "images"
     directory css "css"
     static "favicon.ico"
+    static "robots.txt"
     
     articlePaths <- liftM (reverse . sort) $ getRecursiveContents "articles"
     let articlePages = map ((>>> postManipulation) . createPage) articlePaths
