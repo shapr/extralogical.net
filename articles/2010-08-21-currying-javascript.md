@@ -230,7 +230,7 @@ Further reading & prior art
 * [Cleaner Callbacks With Partial Application][callbacks] by Dan Webb;
 * [Functional JavaScript][functionaljs], a library by Oliver Steele;
 * [Currying][functional] (from the comp.lang.functional FAQ);
-* [Currying Schönfinkelling][c2currying] (on Wiki Wiki Web);
+* [Currying Schönfinkelling][c2currying] (from the c2 wiki);
 * [Currying in Haskell][curryinghaskell] (from the Haskell wiki);
 * [Curried Scheme][curriedscheme] by Edward Kmett.
 
