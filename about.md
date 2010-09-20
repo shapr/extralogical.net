@@ -24,7 +24,7 @@ Benedict currently works for a web development company in London. To get in
 touch, email him at **benedict@eastaugh.net**.
 
 Extralogical's HTML is generated with [Hakyll][hakyll] and resides on
-[Slicehost][slicehost].
+[Linode][linode].
 
-  [hakyll]:    http://jaspervdj.be/hakyll
-  [slicehost]: https://manage.slicehost.com/customers/new?referrer=1654607880
+  [hakyll]: http://jaspervdj.be/hakyll
+  [linode]: http://www.linode.com/?r=d5b087a6d003b8d252fb3e48f23ecc7d95afcbcd
