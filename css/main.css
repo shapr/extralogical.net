@@ -15,7 +15,7 @@ body {min-width:58em; font-family:Georgia, 'Times New Roman', Times, sans-serif;
 
 header, footer, section, article, aside {display:block;}
 h1, h2, h3, h4 {font-weight:normal; margin-bottom:0.5em;}
-    h1 {font-size:24px;}
+    h1 {font-size:20px;}
     h2 {font-size:18px;}
     h3 {font-size:16px;}
     h4 {font-size:14px;}
@@ -49,7 +49,7 @@ table {border-collapse:collapse; border-spacing:0;}
 
 article, section header {overflow:auto; clear:both; border-bottom:1px solid #e5e5e5; padding:1.5em 0;}
     article h1, article h2 {margin-right:3em;}
-    .date {margin:1em 0 0 0; font-family:'Lucida Grande', Helvetica, Arial, sans-serif; font-size:12px;}        
+    .date {margin:0.9em 0 0 0; font-family:'Lucida Grande', Helvetica, Arial, sans-serif; font-size:12px;}
     .modified-date {clear:both; margin-top:2em; font-style:italic;}
     .section {overflow:auto; clear:both; margin-left:-11em; border-top:1px solid #e5e5e5; padding-top:1.5em;}
     
