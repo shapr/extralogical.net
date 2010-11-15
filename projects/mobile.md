@@ -13,8 +13,7 @@ title:  Fish Mobile
 
 This downloadable PDF template will allow you to create your very own fish
 mobile. The template only uses black ink, so it should print on any normal
-desktop printer. Follow the instructions below _to the letter_, or you may
-place yourself in mortal danger.
+desktop printer.
 
 <a class="download" href="$root/files/fish-mobile-template.pdf">
     Download fish mobile template
