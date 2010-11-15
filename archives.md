@@ -2,7 +2,7 @@
 title: Archives
 ---
 
-Extralogical has been around for almost five years. Here's the greatest hits
+Extralogical has been around for over five years. Here's the greatest hits
 collection.
 
 
