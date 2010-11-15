@@ -26,20 +26,15 @@ includes a small gallery of readers' mobiles. If you've made your own, please,
 Instructions
 ------------
 
-_Step 1:_ print this template onto a piece of coloured card. You can buy this
-from art supply shops; I recommend a weight of around 300 gm<sup>-2</sup>.
-Make sure you choose a colour you like! If you want the fish to be different
-colours I’m afraid you’re simply going to have to print this out several times
-on different coloured sheets.
-
-_Step 2:_ cut out the fish shapes with a sharp knife, and use a hole punch (or
-possibly a scalpel) for the eyes. Then use a large needle to make a hole
-through the fin, where indicated.
-
-_Step 3:_ take some fine cotton thread, and thread it through the fin hole. Tie
-the end to the main piece of thread, so the fish won’t fall off. You can now
-attach the fish to a coathanger or circular piece of wire, and hang the
-completed mobile from a lampshade, or something else high enough to ensure you
-don’t bump your head on it.
-
-_Step 4:_ admire your handiwork.
+1.  Print this template onto a piece of coloured card. You can buy this from
+    art supply shops; I recommend a weight of around 300 gm<sup>-2</sup>. If
+    you want the fish to be different colours I'm afraid you're simply going to
+    have to print this out several times on different coloured sheets.
+2.  Cut out the fish shapes with a sharp knife, and use a hole punch for the
+    eyes. Then use a large needle to make a hole through the fin, where
+    indicated.
+3.  Take some fine cotton thread, and thread it through the fin hole. Tie the
+    end to the main piece of thread, so the fish won't fall off. You can now
+    attach the fish to a coat hanger or circular piece of wire, and hang the
+    completed mobile from a lampshade, or something else high enough to ensure
+    you don’t bump your head on it.
