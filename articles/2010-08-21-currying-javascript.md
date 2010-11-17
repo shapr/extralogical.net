@@ -236,7 +236,7 @@ Further reading & prior art
 
 [currying]:        http://en.wikipedia.org/wiki/Currying
 [jqbind]:          http://api.jquery.com/bind/
-[udon]:            http://github.com/ionfish/udon
+[udon]:            http://github.com/beastaugh/udon
 [curriedjs]:       http://www.svendtofte.com/code/curried_javascript/
 [partialjs]:       http://ejohn.org/blog/partial-functions-in-javascript/
 [callbacks]:       http://www.danwebb.net/2006/11/3/from-the-archives-cleaner-callbacks-with-partial-application
