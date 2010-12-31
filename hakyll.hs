@@ -2,7 +2,7 @@ import Data.List (reverse, sort)
 import Control.Arrow ((>>>))
 import Control.Monad (liftM, mapM_)
 
-import Text.Hakyll (hakyll, defaultHakyllConfiguration, hakyllWithConfiguration)
+import Text.Hakyll (defaultHakyllConfiguration, hakyllWithConfiguration)
 import Text.Hakyll.Feed (FeedConfiguration (..), renderAtom)
 import Text.Hakyll.Render (renderChain, static, css)
 import Text.Hakyll.File (getRecursiveContents, directory)
