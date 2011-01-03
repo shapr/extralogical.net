@@ -20,7 +20,7 @@ h1, h2, h3, h4 {font-weight:normal; margin-bottom:0.5em;}
     h3 {font-size:16px;}
     h4 {font-size:14px;}
 p {margin-bottom:1.25em;}
-    a {color:#173b4d; text-decoration:none; border-bottom:1px solid #a3becc;}
+    a {color:#1E4F69; text-decoration:none; border-bottom:1px solid #a3becc;}
     a:hover, article.current .date a, article.current h2 a, .comment.current .meta a, .comments-link a:hover {color:#bf0000; border-color:#ccc;}
     strong {font-weight:bold;}
     em, cite {font-style:italic;}
