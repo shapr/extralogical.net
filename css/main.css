@@ -45,7 +45,6 @@ pre, code {font-family:Monaco, Courier, monospace; font-size:11px; line-height:1
 ins {text-decoration:none;}
 del {text-decoration:line-through;}
 table {border-collapse:collapse; border-spacing:0;}
-:focus {outline:0;}
 
 article, section header {overflow:auto; clear:both; border-bottom:1px solid #e5e5e5; padding:1.5em 0;}
     article h1, article h2 {margin-right:3em;}
