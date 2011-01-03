@@ -60,6 +60,8 @@ article, section header {overflow:auto; clear:both; border-bottom:1px solid #e5e
     .imageleft {float:left; clear:left; margin:0 1em 1em 0;}
     a.imagelink {border-bottom:none;}
 
+    .def {font-variant:small-caps;}
+
 section header {padding-bottom:0.5em;}
 
 #header {border-bottom:1px solid #e5e5e5; padding-top:1.5em;}
