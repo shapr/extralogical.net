@@ -2,8 +2,7 @@
 title: Archives
 ---
 
-Extralogical has been around for over five years. Here's the greatest hits
-collection.
+Extralogical has been around since 2005. Here's the greatest hits collection.
 
 
 [2005]($root/2005)
@@ -88,3 +87,19 @@ equivalents. My article about [switching to Ruby 1.9][ruby19] became
   [urlify]:  $root/2009/06/paper-cuts
   [ruby19]:  $root/2009/07/ruby-one-niner
   [r19yc]:   http://news.ycombinator.com/item?id=782012
+
+2010
+----
+
+2010 saw the development of two projects: [Firmin][firmin], a JavaScript
+animation library that uses CSS transforms and transitions, and [Udon][udon],
+a library for practical functional programming with JavaScript. My experience
+researching and writing about functional programming at work led me to write an
+article on different [approaches to currying in JavaScript][currying]. I also
+changed the site software from WordPress to a Haskell application written with
+[Hakyll][hakyll].
+
+  [firmin]:   $root/projects/firmin
+  [udon]:     $root/projects/udon
+  [currying]: $root/articles/2010-08-21-currying-javascript/
+  [hakyll]:   http://jaspervdj.be/hakyll
