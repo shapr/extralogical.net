@@ -7,7 +7,7 @@ import Text.Hakyll.Feed (FeedConfiguration (..), renderAtom)
 import Text.Hakyll.Render (renderChain, static, css)
 import Text.Hakyll.File (getRecursiveContents, directory)
 import Text.Hakyll.CreateContext (createPage, createListing)
-import Text.Hakyll.ContextManipulations (renderDate, changeValue)
+import Text.Hakyll.ContextManipulations (changeValue, renderDate, renderValue)
 import Text.Hakyll.HakyllMonad (HakyllConfiguration (..))
 
 exlConfig :: HakyllConfiguration
@@ -23,7 +23,8 @@ main = hakyllWithConfiguration exlConfig $ do
     static "robots.txt"
     
     articlePaths <- liftM (reverse . sort) $ getRecursiveContents "articles"
-    let articlePages = map ((>>> postManipulation) . createPage) articlePaths
+    let articlePages = map ((>>> formatDates >>> pageTitles) . createPage)
+                           articlePaths
     
     mapM_ (renderChain [ "templates/article.html"
                        , "templates/default.html"
@@ -32,7 +33,7 @@ main = hakyllWithConfiguration exlConfig $ do
     let index = createListing "index.html"
                              ["templates/item.html"]
                              (take 10 articlePages)
-                             [("title", Left "Extralogical")]
+                             [("pageTitle", Left "Extralogical")]
     
     renderChain ["index.html", "templates/default.html"] index
     
@@ -40,7 +41,8 @@ main = hakyllWithConfiguration exlConfig $ do
     
     -- Some static pages.
     mapM_ (renderChain [ "templates/page.html"
-                       , "templates/default.html" ] . createPage)
+                       , "templates/default.html" ]
+          . (>>> pageTitles) . createPage)
             [ "projects.html"
             , "projects/mobile.md"
             , "projects/papertrail.md"
@@ -57,4 +59,5 @@ feedConfiguration = FeedConfiguration
     , feedAuthorName  = "Benedict Eastaugh"
     }
 
-postManipulation = renderDate "published" "%B %e, %Y" "Date unknown"
+formatDates = renderDate "published" "%B %e, %Y" "Date unknown"
+pageTitles  = renderValue "title" "pageTitle" ("Extralogical: " ++)
