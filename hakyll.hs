@@ -44,6 +44,7 @@ main = hakyllWithConfiguration exlConfig $ do
                        , "templates/default.html" ]
           . (>>> pageTitles) . createPage)
             [ "projects.html"
+            , "projects/hatt.md"
             , "projects/mobile.md"
             , "projects/papertrail.md"
             , "archives.md"
