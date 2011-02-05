@@ -20,7 +20,7 @@ and structuralism about mathematics and metaphysics.
 
 I also do a certain amount of programming: my current [projects] include
 [Firmin][firmin], a JavaScript animation library, and various experiments with
-[Haskell][haskell]. My addictions to coffee, [notebooks], and the work of
+[Haskell][haskell]. My addictions to [coffee], [notebooks], and the work of
 [J.G. Ballard][ballard] and [Philip K. Dick][pkd] have been well-publicised.
 [Books on Extralogical][books] is a terrible guide to what I read, but a good
 one to what I finish.
@@ -31,6 +31,7 @@ Extralogical's HTML is generated with [Hakyll][hakyll] and resides on
   [projects]:  $root/projects
   [firmin]:    $root/projects/firmin
   [haskell]:   http://haskell.org
+  [coffee]:    $root/about/coffee
   [notebooks]: $root/about/notebooks
   [ballard]:   http://www.ballardian.com
   [pkd]:       http://archive.extralogical.net/taxon/philip-k-dick

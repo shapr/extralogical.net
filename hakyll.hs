@@ -49,6 +49,7 @@ main = hakyllWithConfiguration exlConfig $ do
             , "projects/papertrail.md"
             , "archives.md"
             , "about.md"
+            , "about/coffee.md"
             , "about/notebooks.md"
             ]
 
