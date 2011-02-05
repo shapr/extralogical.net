@@ -36,10 +36,15 @@ garden and around the house. Slim, light and small, they accompany me most
 places. I have some Muji notebooks too, but they don't fit into a pocket as
 easily, so I tend not to use them.
 
-Pens
-----
+Pens & pencils
+--------------
 
-I write with black [UB-150][ub150]s from the Mitsubishi Pencil Co.
+My pens of choice are black [UB-150][ub150]s from the Mitsubishi Pencil Co.
+Lately I've been mainly writing with pencils. I really recommend the Field
+Notes ones: the cedar casing is wonderfully aromatic, and the graphite is dark.
+Because they're unlaquered, they also feel great in the hand.
+[Henry Petroski's book][thepencil] on the history of pencils is quite
+fascinating.
 
   [musings]:      $root/2005/04/moleskine-musings
   [moleskinerie]: http://moleskinerie.com
@@ -47,3 +52,4 @@ I write with black [UB-150][ub150]s from the Mitsubishi Pencil Co.
   [fieldnotes]:   http://fieldnotesbrand.com
   [coudal]:       http://coudal.com
   [ub150]:        http://www.uniball.com/catalog/show/product.php?no=5
+  [thepencil]:    http://www.pencilrevolution.com/2006/04/revolutionary-reading-the-pencil/
