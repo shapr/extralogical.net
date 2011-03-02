@@ -5,7 +5,7 @@ title: About
 <div class="image imageright">
   <img title="YT"
        alt="A photo of Benedict Eastaugh"
-       src="$root/images/me.jpg">
+       src="/images/me.jpg">
 </div>
 
 I'm **Benedict Eastaugh**, a postgrad studying logic and philosophy of
@@ -28,11 +28,11 @@ one to what I finish.
 Extralogical's HTML is generated with [Hakyll][hakyll] and resides on
 [Linode][linode].
 
-  [projects]:  $root/projects
-  [firmin]:    $root/projects/firmin
+  [projects]:  /projects
+  [firmin]:    /projects/firmin
   [haskell]:   http://haskell.org
-  [coffee]:    $root/about/coffee
-  [notebooks]: $root/about/notebooks
+  [coffee]:    /about/coffee
+  [notebooks]: /about/notebooks
   [ballard]:   http://www.ballardian.com
   [pkd]:       http://archive.extralogical.net/taxon/philip-k-dick
   [mail]:      mailto:benedict@eastaugh.net

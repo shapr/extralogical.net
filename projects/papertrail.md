@@ -27,7 +27,7 @@ URLify is released under the BSD license.
   [books]:  http://books.extralogical.net
   [rails]:  http://rubyonrails.org
   [source]: http://github.com/beastaugh/papertrail
-  [intro]:  $root/2008/11/bookkeeping
-  [more]:   $root/taxon/paper-trail
+  [intro]:  /2008/11/bookkeeping
+  [more]:   /taxon/paper-trail
   [bugs]:   http://github.com/beastaugh/papertrail/issues
   [urlify]: http://github.com/beastaugh/urlify

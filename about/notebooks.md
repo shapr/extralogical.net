@@ -46,7 +46,7 @@ Because they're unlaquered, they also feel great in the hand.
 [Henry Petroski's book][thepencil] on the history of pencils is quite
 fascinating.
 
-  [musings]:      $root/2005/04/moleskine-musings
+  [musings]:      /2005/04/moleskine-musings
   [moleskinerie]: http://moleskinerie.com
   [rhodiadrive]:  http://rhodiadrive.com
   [fieldnotes]:   http://fieldnotesbrand.com

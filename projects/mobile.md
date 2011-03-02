@@ -5,23 +5,23 @@ title:  Fish Mobile
 
 <p><a title="Download the mobile"
    class="imagelink"
-   href="$root/files/fish-mobile-template.pdf">
+   href="/files/fish-mobile-template.pdf">
     <img class="imageright"
          alt="Fish Mobile"
-         src="$root/images/projects/mobile.jpg">
+         src="/images/projects/mobile.jpg">
 </a></p>
 
 This downloadable PDF template will allow you to create your very own fish
 mobile. The template only uses black ink, so it should print on any normal
 desktop printer.
 
-<a class="download" href="$root/files/fish-mobile-template.pdf">
+<a class="download" href="/files/fish-mobile-template.pdf">
     Download fish mobile template
 </a>
 
-The mobile made its debut in [this entry]($root/2006/01/fish-mobile), which
+The mobile made its debut in [this entry](/2006/01/fish-mobile), which
 includes a small gallery of readers' mobiles. If you've made your own, please,
-[send in]($root/about) a photo or three!
+[send in](/about) a photo or three!
 
 Instructions
 ------------

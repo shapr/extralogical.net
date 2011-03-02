@@ -1,5 +1,6 @@
 ---
 title: Approaches to currying in JavaScript
+description: Due to its dynamic nature, no single currying technique is universally efficacious in JavaScript programming. In this article, various approaches to currying in JavaScript are discussed, together with their associated advantages and disadvantages, and some conclusions are drawn.
 ---
 
 JavaScript's dynamic nature makes it hard to straightforwardly apply many
