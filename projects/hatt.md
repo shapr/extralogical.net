@@ -45,5 +45,5 @@ follow these rules quite precisely. This shouldn't be a great hardship, but it
 does mean that, for example, while `(A -> B)` is a valid expression, `A -> B`
 isn't.
 
-[Hatt]: https://github.com/beastaugh/hatt
-[Hackage]: http://hackage.haskell.org/
+[Hatt]:    https://github.com/beastaugh/hatt
+[Hackage]: http://hackage.haskell.org/package/hatt
