@@ -8,6 +8,7 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td {margin:0; padding:0; border:0; outline:0; font-size:100%; vertical-align:baseline; background:transparent;}
 
+html {overflow-y:scroll;}
 body {min-width:58em; font-family:Georgia, 'Times New Roman', Times, sans-serif; font-size:14px; line-height:1.5; color:#1a1a1a; background:#fff;}
 .wrapper {width:54em; margin:0 auto; overflow:auto;}
 .primary {width:43em; float:right;}
