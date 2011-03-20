@@ -32,8 +32,8 @@ flag to see a list of available commands.
 The following are all valid expression forms which can be parsed by Hatt, where
 ϕ and ψ are metalinguistic variables standing in for any valid expression.
 
-* Variables: `P`, `Q`, `R` etc.---basically anything in the character class
-  `[A-Z]`
+* Variables: `P`, `Q`, `a`, `b` etc.---basically anything in the character
+  class `[a-zA-Z]`
 * Negation: `~ϕ`
 * Conjunction: `(ϕ & ψ)`
 * Disjunction: `(ϕ | ψ)`
@@ -42,7 +42,7 @@ The following are all valid expression forms which can be parsed by Hatt, where
 
 The parser isn't as smart about parentheses as it could be, so you have to
 follow these rules quite precisely. This shouldn't be a great hardship, but it
-does mean that, for example, while `(A -> B)` is a valid expression, `A -> B`
+does mean that, for example, while `(p -> q)` is a valid expression, `p -> q`
 isn't.
 
 [Hatt]:    https://github.com/beastaugh/hatt
