@@ -46,7 +46,7 @@ del {text-decoration:line-through;}
 table {border-collapse:collapse; border-spacing:0;}
 
 article {clear:both; border-bottom:1px solid #e5e5e5; padding:2em 0;}
-    article h1 {margin-bottom:0.3em; border-bottom:1px solid #ccc; padding-bottom:0.15em;}
+    article h1 {margin-bottom:0.4em; border-bottom:1px solid #ccc; padding-bottom:0.3em;}
     article h1 a {border-bottom:none;}
     .date {margin:0 0 0.5em 0; font-variant:small-caps;}
     .section {overflow:auto; clear:both; border-top:1px solid #e5e5e5; padding-top:1.5em;}
@@ -57,7 +57,7 @@ article {clear:both; border-bottom:1px solid #e5e5e5; padding:2em 0;}
     .imageleft {float:left; clear:left; margin:0 1em 1em 0;}
     a.imagelink {border-bottom:none;}
     .def {font-variant:small-caps;}
-    section.content {margin-top:1.25em;}
+    section.content {margin-top:0.9em;}
 
 #header {overflow:auto; padding:12px 0 10px 0; border-bottom:1px solid #e5e5e5;}
 #header {font-family:'Lucida Grande', Helvetica, Arial, sans-serif; text-transform:uppercase; letter-spacing:0.2em;}
