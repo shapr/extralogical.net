@@ -85,7 +85,7 @@ main = hakyll $ do
         >>> relativizeUrlsCompiler
     
     -- Render Atom feed
-    route  "articles.atom" idRoute
+    route  "articles.atom" $ idRoute
     create "articles.atom" $
         requireAll_ "articles/*" >>> renderAtom feedConfiguration
     
@@ -107,7 +107,7 @@ stripIndexLink :: Page a -> Page a
 stripIndexLink = changeField "url" dropFileName
 
 fileToDirectory :: Identifier -> FilePath
-fileToDirectory = (flip combine) "index.html" . dropExtension . toFilePath
+fileToDirectory = flip combine "index.html" . dropExtension . toFilePath
 
 formatDate :: Page a -> Page a
 formatDate = renderDateField "published" "%B %e, %Y" "Date unknown"
