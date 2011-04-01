@@ -53,8 +53,18 @@ main = hakyll $ do
     route  "index.html" $ idRoute
     create "index.html" $ constA mempty
         >>> arr (setField "pageTitle" "Extralogical")
-        >>> requireAllA "articles/*" (id *** arr newest10 >>> addArticlesList)
+        >>> requireAllA "articles/*" (id *** arr (newest 10) >>> addArticlesList)
         >>> applyTemplateCompiler "templates/home.html"
+        >>> applyTemplateCompiler "templates/default.html"
+        >>> relativizeUrlsCompiler
+    
+    -- Articles listing
+    route  "articles.html" $ routePage
+    create "articles.html" $ constA mempty
+        >>> arr (setField "title" "Articles")
+        >>> arr pageTitle
+        >>> requireAllA "articles/*" addFullArticleListing
+        >>> applyTemplateCompiler "templates/articles.html"
         >>> applyTemplateCompiler "templates/default.html"
         >>> relativizeUrlsCompiler
     
@@ -93,10 +103,16 @@ main = hakyll $ do
     return ()
 
 addArticlesList :: Compiler (Page String, [Page String]) (Page String)
-addArticlesList = setFieldA "articles" $
+addArticlesList = addPageList "articles" "templates/short.html"
+
+addFullArticleListing :: Compiler (Page String, [Page String]) (Page String)
+addFullArticleListing = addPageList "articles" "templates/item.html"
+
+addPageList :: String -> Identifier -> Compiler (Page String, [Page String]) (Page String)
+addPageList field template = setFieldA field $
     arr (reverse . sortByBaseName)
         >>> arr (map stripIndexLink)
-        >>> require "templates/item.html" (\p t -> map (applyTemplate t) p)
+        >>> require template (\p t -> map (applyTemplate t) p)
         >>> arr mconcat
         >>> arr pageBody
 
@@ -115,8 +131,8 @@ formatDate = renderDateField "published" "%B %e, %Y" "Date unknown"
 pageTitle :: Page a -> Page a
 pageTitle = renderField "title" "pageTitle" ("Extralogical: " ++)
 
-newest10 :: [Page a] -> [Page a]
-newest10 = take 10 . reverse . sortByBaseName
+newest :: Int -> [Page a] -> [Page a]
+newest n = take n . reverse . sortByBaseName
 
 feedConfiguration :: FeedConfiguration
 feedConfiguration = FeedConfiguration
