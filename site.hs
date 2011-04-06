@@ -14,43 +14,50 @@ import Hakyll
 main :: IO ()
 main = hakyll $ do
     -- Copy images
-    route   "images/**" idRoute
-    compile "images/**" copyFileCompiler
+    match "images/**" $ do
+        route   idRoute
+        compile copyFileCompiler
     
     -- Copy files
-    route   "files/*" idRoute
-    compile "files/*" copyFileCompiler
+    match "files/**" $ do
+        route   idRoute
+        compile copyFileCompiler
     
     -- Copy favicon
-    route   "favicon.ico" idRoute
-    compile "favicon.ico" copyFileCompiler
+    match "favicon.ico" $ do
+        route   idRoute
+        compile copyFileCompiler
     
     -- Copy robots file
-    route   "robots.txt" idRoute
-    compile "robots.txt" copyFileCompiler
+    match "robots.txt" $ do
+        route   idRoute
+        compile copyFileCompiler
     
     -- Copy JavaScript
-    route   "js/*" idRoute
-    compile "js/*" copyFileCompiler
+    match "js/*" $ do
+        route   idRoute
+        compile copyFileCompiler
     
     -- Compress CSS
-    route   "css/*" idRoute
-    compile "css/*" compressCssCompiler
+    match "css/*" $ do
+        route   idRoute
+        compile compressCssCompiler
     
     -- Read templates
-    compile "templates/*" templateCompiler
+    match "templates/*" $ compile templateCompiler
     
     -- Render articles
-    route   "articles/*" $ routePage
-    compile "articles/*" $ pageCompiler
-        >>> arr pageTitle
-        >>> arr formatDate
-        >>> applyTemplateCompiler "templates/article.html"
-        >>> applyTemplateCompiler "templates/default.html"
-        >>> relativizeUrlsCompiler
+    match "articles/*" $ do
+        route   $ routePage
+        compile $ pageCompiler
+            >>> arr pageTitle
+            >>> arr formatDate
+            >>> applyTemplateCompiler "templates/article.html"
+            >>> applyTemplateCompiler "templates/default.html"
+            >>> relativizeUrlsCompiler
     
     -- Render home page
-    route  "index.html" $ idRoute
+    match  "index.html" $ route idRoute
     create "index.html" $ constA mempty
         >>> arr (setField "pageTitle" "Extralogical")
         >>> requireAllA "articles/*" (id *** arr (newest 10) >>> addArticlesList)
@@ -59,7 +66,7 @@ main = hakyll $ do
         >>> relativizeUrlsCompiler
     
     -- Articles listing
-    route  "articles.html" $ routePage
+    match  "articles.html" $ route routePage
     create "articles.html" $ constA mempty
         >>> arr (setField "title" "Articles")
         >>> arr pageTitle
@@ -77,25 +84,27 @@ main = hakyll $ do
           , "about/coffee.md"
           , "about/notebooks.md"
           ] $ \page -> do
-        route   page $ routePage
-        compile page $ pageCompiler
+        match page $ do
+            route   $ routePage
+            compile $ pageCompiler
+                >>> arr pageTitle
+                >>> applyTemplateCompiler "templates/page.html"
+                >>> applyTemplateCompiler "templates/default.html"
+                >>> relativizeUrlsCompiler
+    
+    -- Render HTML pages
+    match   "projects.html" $ do
+        route   $ routePage
+        compile $ readPageCompiler
+            >>> addDefaultFields
+            >>> arr applySelf
             >>> arr pageTitle
             >>> applyTemplateCompiler "templates/page.html"
             >>> applyTemplateCompiler "templates/default.html"
             >>> relativizeUrlsCompiler
     
-    -- Render HTML pages
-    route   "projects.html" $ routePage
-    compile "projects.html" $ readPageCompiler
-        >>> addDefaultFields
-        >>> arr applySelf
-        >>> arr pageTitle
-        >>> applyTemplateCompiler "templates/page.html"
-        >>> applyTemplateCompiler "templates/default.html"
-        >>> relativizeUrlsCompiler
-    
     -- Render Atom feed
-    route  "articles.atom" $ idRoute
+    match  "articles.atom" $ route idRoute
     create "articles.atom" $
         requireAll_ "articles/*" >>> renderAtom feedConfiguration
     
