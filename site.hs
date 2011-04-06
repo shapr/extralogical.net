@@ -48,7 +48,7 @@ main = hakyll $ do
     
     -- Render articles
     match "articles/*" $ do
-        route   $ routePage
+        route   $ routeArticle
         compile $ pageCompiler
             >>> arr pageTitle
             >>> arr formatDate
@@ -120,7 +120,6 @@ addFullArticleListing = addPageList "articles" "templates/item.html"
 addPageList :: String -> Identifier -> Compiler (Page String, [Page String]) (Page String)
 addPageList field template = setFieldA field $
     arr (reverse . sortByBaseName)
-        >>> arr (map stripIndexLink)
         >>> require template (\p t -> map (applyTemplate t) p)
         >>> arr mconcat
         >>> arr pageBody
@@ -128,8 +127,12 @@ addPageList field template = setFieldA field $
 routePage :: Routes
 routePage = customRoute fileToDirectory
 
-stripIndexLink :: Page a -> Page a
-stripIndexLink = changeField "url" dropFileName
+routeArticle :: Routes
+routeArticle = customRoute (flip replaceExtension ".html" . dropDate)
+
+dropDate :: Identifier -> FilePath
+dropDate ident = let file = toFilePath ident
+                 in  replaceFileName file (drop 11 $ takeFileName file)
 
 fileToDirectory :: Identifier -> FilePath
 fileToDirectory = flip combine "index.html" . dropExtension . toFilePath
