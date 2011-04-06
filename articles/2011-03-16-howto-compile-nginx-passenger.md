@@ -22,7 +22,7 @@ Nginx is a web server, much like [Apache]. Passenger is an application server
 for web applications written in Ruby. Passenger provides an Nginx module, and
 the only way to add a module to Nginx is to compile it with that module, so
 even if you're only upgrading or installing Passenger, you still need to
-(re)compile Nginx.
+recompile Nginx.
 
 This article is a guide to installing these two programs from scratch, but it's
 also a guide to upgrading one or both. If you get lost at any point---if
