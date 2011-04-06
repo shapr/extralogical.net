@@ -13,27 +13,27 @@ import Hakyll
 
 main :: IO ()
 main = hakyll $ do
-    -- Copy images
+    -- Images
     match "images/**" $ do
         route   idRoute
         compile copyFileCompiler
     
-    -- Copy files
+    -- Files
     match "files/**" $ do
         route   idRoute
         compile copyFileCompiler
     
-    -- Copy favicon
+    -- Favicon
     match "favicon.ico" $ do
         route   idRoute
         compile copyFileCompiler
     
-    -- Copy robots file
+    -- Robots file
     match "robots.txt" $ do
         route   idRoute
         compile copyFileCompiler
     
-    -- Copy JavaScript
+    -- JavaScript
     match "js/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -46,7 +46,7 @@ main = hakyll $ do
     -- Read templates
     match "templates/*" $ compile templateCompiler
     
-    -- Render articles
+    -- Articles
     match "articles/*" $ do
         route   $ routeArticle
         compile $ pageCompiler
@@ -56,7 +56,7 @@ main = hakyll $ do
             >>> applyTemplateCompiler "templates/default.html"
             >>> relativizeUrlsCompiler
     
-    -- Render home page
+    -- Home page
     match  "index.html" $ route idRoute
     create "index.html" $ constA mempty
         >>> arr (setField "pageTitle" "Extralogical")
@@ -75,7 +75,7 @@ main = hakyll $ do
         >>> applyTemplateCompiler "templates/default.html"
         >>> relativizeUrlsCompiler
     
-    -- Render site pages
+    -- Site pages
     forM_ [ "projects/hatt.md"
           , "projects/mobile.md"
           , "projects/papertrail.md"
@@ -92,7 +92,7 @@ main = hakyll $ do
                 >>> applyTemplateCompiler "templates/default.html"
                 >>> relativizeUrlsCompiler
     
-    -- Render HTML pages
+    -- Projects page
     match   "projects.html" $ do
         route   $ routePage
         compile $ readPageCompiler
@@ -103,7 +103,7 @@ main = hakyll $ do
             >>> applyTemplateCompiler "templates/default.html"
             >>> relativizeUrlsCompiler
     
-    -- Render Atom feed
+    -- Atom feed
     match  "articles.atom" $ route idRoute
     create "articles.atom" $
         requireAll_ "articles/*" >>> renderAtom feedConfiguration
