@@ -8,6 +8,8 @@ import Control.Monad (forM_)
 import Data.Monoid (mempty, mconcat)
 
 import System.FilePath
+import Text.Pandoc (HTMLMathMethod(..), WriterOptions(..), defaultWriterOptions)
+import Text.Pandoc.Shared (ObfuscationMethod(..))
 
 import Hakyll
 
@@ -49,7 +51,7 @@ main = hakyll $ do
     -- Articles
     match "articles/*" $ do
         route   $ routeArticle
-        compile $ pageCompiler
+        compile $ articleCompiler
             >>> arr pageTitle
             >>> arr formatDate
             >>> applyTemplateCompiler "templates/article.html"
@@ -60,7 +62,7 @@ main = hakyll $ do
     match  "index.html" $ route idRoute
     create "index.html" $ constA mempty
         >>> arr (setField "pageTitle" "Extralogical")
-        >>> requireAllA "articles/*" (id *** arr (newest 10) >>> addArticlesList)
+        >>> requireAllA "articles/*" (id *** arr (newest 10) >>> addArticles)
         >>> applyTemplateCompiler "templates/home.html"
         >>> applyTemplateCompiler "templates/default.html"
         >>> relativizeUrlsCompiler
@@ -70,7 +72,7 @@ main = hakyll $ do
     create "articles.html" $ constA mempty
         >>> arr (setField "title" "Articles")
         >>> arr pageTitle
-        >>> requireAllA "articles/*" addFullArticleListing
+        >>> requireAllA "articles/*" addArticleListing
         >>> applyTemplateCompiler "templates/articles.html"
         >>> applyTemplateCompiler "templates/default.html"
         >>> relativizeUrlsCompiler
@@ -86,7 +88,7 @@ main = hakyll $ do
           ] $ \page -> do
         match page $ do
             route   $ routePage
-            compile $ pageCompiler
+            compile $ articleCompiler
                 >>> arr pageTitle
                 >>> applyTemplateCompiler "templates/page.html"
                 >>> applyTemplateCompiler "templates/default.html"
@@ -111,12 +113,37 @@ main = hakyll $ do
     -- Fin
     return ()
 
-addArticlesList :: Compiler (Page String, [Page String]) (Page String)
-addArticlesList = addPageList "articles" "templates/short.html"
+-- | Read a page, add default fields, substitute fields and render with Pandoc.
+--
+articleCompiler :: Compiler Resource (Page String)
+articleCompiler = cached "Hakyll.Web.Page.articleCompiler" $ readPageCompiler
+    >>> addDefaultFields
+    >>> arr applySelf
+    >>> pageRenderPandocWith defaultHakyllParserState articleWriterOptions
 
-addFullArticleListing :: Compiler (Page String, [Page String]) (Page String)
-addFullArticleListing = addPageList "articles" "templates/item.html"
+-- | Pandoc writer options for articles on Extralogical.
+--
+articleWriterOptions :: WriterOptions
+articleWriterOptions = defaultWriterOptions
+    { writerEmailObfuscation = NoObfuscation
+    , writerHTMLMathMethod   = MathML Nothing
+    , writerLiterateHaskell  = True
+    }
 
+-- | Add some articles to a page, applying a template that shows an abbreviated
+-- version of each article.
+--
+addArticles :: Compiler (Page String, [Page String]) (Page String)
+addArticles = addPageList "articles" "templates/short.html"
+
+-- | Add an articles listing to a page.
+--
+addArticleListing :: Compiler (Page String, [Page String]) (Page String)
+addArticleListing = addPageList "articles" "templates/item.html"
+
+-- | Add a page listing to a page under the given field, applying the template
+-- to each listed page.
+--
 addPageList :: String -> Identifier -> Compiler (Page String, [Page String]) (Page String)
 addPageList field template = setFieldA field $
     arr (reverse . sortByBaseName)
@@ -124,28 +151,45 @@ addPageList field template = setFieldA field $
         >>> arr mconcat
         >>> arr pageBody
 
+-- | Take a page like @\"/about/notebooks.md\"@ and route it to
+-- @\"/about/notebooks\"@, i.e. turn a filename into a drectory.
+--
 routePage :: Routes
 routePage = customRoute fileToDirectory
 
+-- | Drop the date and set the file extension to ".html" when routing articles.
+--
 routeArticle :: Routes
 routeArticle = customRoute (flip replaceExtension ".html" . dropDate)
 
+-- | Turn an @Identifier@ into a @FilePath@, dropping the date prefix (e.g.
+-- @\"2011-04-07-\"@) along the way.
 dropDate :: Identifier -> FilePath
 dropDate ident = let file = toFilePath ident
                  in  replaceFileName file (drop 11 $ takeFileName file)
 
+-- | Turn a filename reference into a directory with an index file.
+--
 fileToDirectory :: Identifier -> FilePath
 fileToDirectory = flip combine "index.html" . dropExtension . toFilePath
 
+-- | Extralogical date formatting.
+--
 formatDate :: Page a -> Page a
 formatDate = renderDateField "published" "%B %e, %Y" "Date unknown"
 
+-- | Prefix page titles with "Extralogical: "
+--
 pageTitle :: Page a -> Page a
 pageTitle = renderField "title" "pageTitle" ("Extralogical: " ++)
 
+-- | Take the most recent n articles.
+--
 newest :: Int -> [Page a] -> [Page a]
 newest n = take n . reverse . sortByBaseName
 
+-- | Extralogical feed metadata.
+--
 feedConfiguration :: FeedConfiguration
 feedConfiguration = FeedConfiguration
     { feedTitle       = "Extralogical"

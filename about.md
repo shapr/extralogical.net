@@ -12,7 +12,7 @@ I'm **Benedict Eastaugh**, a postgrad studying logic and philosophy of
 mathematics at the University of Bristol. Like most people in the universe
 these days, I'm on Twitter as [@extralogical][twitter].
 
-To get in touch, email me at [benedict\\@eastaugh.net][mail].
+To get in touch, email me at [benedict\@eastaugh.net][mail].
 
 My research interests include foundational questions in the philosophy of
 mathematics; using inductive logic to describe the dynamics of neural networks;
