@@ -178,23 +178,22 @@ function which generates curry functions for any given arity.
 
 ~~~{.JavaScript}
 var ncurry = function(n) {
-    return function(f) {
+    var _curry = function(f) {
         var args = Array.prototype.slice.call(arguments, 1),
         
-        accumulator = function() {
+        return function() {
             var largs = args.concat(Array.prototype.slice.call(arguments, 0));
             
             if (largs.length < n) {
                 largs.unshift(f);
-                args = largs;
-                return accumulator;
+                return _curry.apply(null, largs);
             } else {
                 return f.apply(null, largs);
             }
         };
-        
-        return accumulator;
     };
+    
+    return _curry;
 };
 ~~~
 
