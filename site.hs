@@ -62,7 +62,12 @@ main = hakyll $ do
     group "raw" $ do
         match "articles/*" $ do
             route   $ routeArticleRaw
-            compile $ copyFileCompiler
+            compile $ readPageCompiler
+                >>> addDefaultFields
+                >>> arr formatDate
+                >>> arr (markdownH1 "rawTitle")
+                >>> arr (htmlUrl "articleUrl")
+                >>> applyTemplateCompiler "templates/raw.txt"
     
     -- Home page
     match  "index.html" $ route idRoute
@@ -199,6 +204,18 @@ formatDate = renderDateField "published" "%B %e, %Y" "Date unknown"
 --
 pageTitle :: Page a -> Page a
 pageTitle = renderField "title" "pageTitle" ("Extralogical: " ++)
+
+markdownH1 :: String -> Page a -> Page a
+markdownH1 field page = setField field md page
+  where
+    title = getField "title" page
+    line  = replicate (length title) '='
+    md    = init $ unlines [title, line]
+
+htmlUrl :: String -> Page a -> Page a
+htmlUrl field page = setField field url page
+  where
+    url = replaceExtension (getField "url" page) ".html"
 
 -- | Take the most recent n articles.
 --
