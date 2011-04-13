@@ -5,7 +5,7 @@ import Prelude hiding (id)
 import Control.Category (id)
 import Control.Arrow ((>>>), (***), arr)
 import Control.Monad (forM_)
-import Data.Monoid (mempty, mconcat)
+import Data.Monoid (mappend, mempty, mconcat)
 
 import System.FilePath
 import Text.Pandoc (HTMLMathMethod(..), WriterOptions(..), defaultWriterOptions)
@@ -58,11 +58,17 @@ main = hakyll $ do
             >>> applyTemplateCompiler "templates/default.html"
             >>> relativizeUrlsCompiler
     
+    -- Plain text versions of articles
+    group "raw" $ do
+        match "articles/*" $ do
+            route   $ routeArticleRaw
+            compile $ copyFileCompiler
+    
     -- Home page
     match  "index.html" $ route idRoute
     create "index.html" $ constA mempty
         >>> arr (setField "pageTitle" "Extralogical")
-        >>> requireAllA "articles/*" (id *** arr (newest 10) >>> addArticles)
+        >>> requireAllA ("articles/*" `mappend` inGroup Nothing) (id *** arr (newest 10) >>> addArticles)
         >>> applyTemplateCompiler "templates/home.html"
         >>> applyTemplateCompiler "templates/default.html"
         >>> relativizeUrlsCompiler
@@ -72,7 +78,7 @@ main = hakyll $ do
     create "articles.html" $ constA mempty
         >>> arr (setField "title" "Articles")
         >>> arr pageTitle
-        >>> requireAllA "articles/*" addArticleListing
+        >>> requireAllA ("articles/*" `mappend` inGroup Nothing) addArticleListing
         >>> applyTemplateCompiler "templates/articles.html"
         >>> applyTemplateCompiler "templates/default.html"
         >>> relativizeUrlsCompiler
@@ -108,7 +114,7 @@ main = hakyll $ do
     -- Atom feed
     match  "articles.atom" $ route idRoute
     create "articles.atom" $
-        requireAll_ "articles/*" >>> renderAtom feedConfiguration
+        requireAll_ ("articles/*" `mappend` inGroup Nothing) >>> renderAtom feedConfiguration
     
     -- Fin
     return ()
@@ -160,7 +166,18 @@ routePage = customRoute fileToDirectory
 -- | Drop the date and set the file extension to ".html" when routing articles.
 --
 routeArticle :: Routes
-routeArticle = customRoute (flip replaceExtension ".html" . dropDate)
+routeArticle = routeArticleExt ".html"
+
+-- | Drop the date and set the file extension to ".raw" when routing the raw
+-- versions of articles.
+--
+routeArticleRaw :: Routes
+routeArticleRaw = routeArticleExt ".txt"
+
+-- | Article routing with a specific file extension.
+--
+routeArticleExt :: String -> Routes
+routeArticleExt ext = customRoute (flip replaceExtension ext . dropDate)
 
 -- | Turn an @Identifier@ into a @FilePath@, dropping the date prefix (e.g.
 -- @\"2011-04-07-\"@) along the way.
