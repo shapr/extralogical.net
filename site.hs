@@ -127,10 +127,7 @@ main = hakyll $ do
 -- | Read a page, add default fields, substitute fields and render with Pandoc.
 --
 articleCompiler :: Compiler Resource (Page String)
-articleCompiler = cached "Hakyll.Web.Page.articleCompiler" $ readPageCompiler
-    >>> addDefaultFields
-    >>> arr applySelf
-    >>> pageRenderPandocWith defaultHakyllParserState articleWriterOptions
+articleCompiler = pageCompilerWith defaultHakyllParserState articleWriterOptions
 
 -- | Pandoc writer options for articles on Extralogical.
 --
