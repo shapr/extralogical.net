@@ -181,7 +181,7 @@ equations are
 
 > $x^0 = 1$
 >
-> $x^S(y) = x^y \cdot y$
+> $x^{S(y)} = x^y \cdot y$
 
 Again, all we need to do to define this new function is state the base case
 ($\mathsf{SO}$, corresponding to the rule that any number raised to exponent 0
