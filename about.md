@@ -34,7 +34,7 @@ Extralogical's HTML is generated with [Hakyll][hakyll] and resides on
   [coffee]:    /about/coffee
   [notebooks]: /about/notebooks
   [ballard]:   http://www.ballardian.com
-  [pkd]:       http://archive.extralogical.net/taxon/philip-k-dick
+  [pkd]:       /about/pkd
   [mail]:      mailto:benedict@eastaugh.net
   [twitter]:   http://twitter.com/extralogical
   [books]:     http://books.extralogical.net

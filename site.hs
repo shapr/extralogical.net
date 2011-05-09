@@ -96,6 +96,7 @@ main = hakyll $ do
           , "about.md"
           , "about/coffee.md"
           , "about/notebooks.md"
+          , "about/pkd.md"
           ] $ \page -> do
         match page $ do
             route   $ routePage
