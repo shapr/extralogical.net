@@ -48,8 +48,10 @@ main = hakyll $ do
     -- Read templates
     match "templates/*" $ compile templateCompiler
     
+    let articleDirs = regex "^(articles|drafts)\\/.+\\.[a-z]+$"
+    
     -- Articles
-    match "articles/*" $ do
+    match articleDirs $ do
         route   $ routeArticle
         compile $ articleCompiler
             >>> arr pageTitle
@@ -60,7 +62,7 @@ main = hakyll $ do
     
     -- Plain text versions of articles
     group "raw" $ do
-        match "articles/*" $ do
+        match "{articles,drafts}/*" $ do
             route   $ routeArticleRaw
             compile $ readPageCompiler
                 >>> addDefaultFields
@@ -73,7 +75,7 @@ main = hakyll $ do
     match  "index.html" $ route idRoute
     create "index.html" $ constA mempty
         >>> arr (setField "pageTitle" "Extralogical")
-        >>> requireAllA ("articles/*" `mappend` inGroup Nothing) (id *** arr (newest 10) >>> addArticles)
+        >>> requireAllA (articleDirs `mappend` inGroup Nothing) (id *** arr (newest 10) >>> addArticles)
         >>> applyTemplateCompiler "templates/home.html"
         >>> applyTemplateCompiler "templates/default.html"
         >>> relativizeUrlsCompiler
@@ -83,7 +85,7 @@ main = hakyll $ do
     create "articles.html" $ constA mempty
         >>> arr (setField "title" "Articles")
         >>> arr pageTitle
-        >>> requireAllA ("articles/*" `mappend` inGroup Nothing) addArticleListing
+        >>> requireAllA (articleDirs `mappend` inGroup Nothing) addArticleListing
         >>> applyTemplateCompiler "templates/articles.html"
         >>> applyTemplateCompiler "templates/default.html"
         >>> relativizeUrlsCompiler
@@ -120,7 +122,7 @@ main = hakyll $ do
     -- Atom feed
     match  "articles.atom" $ route idRoute
     create "articles.atom" $
-        requireAll_ ("articles/*" `mappend` inGroup Nothing) >>> renderAtom feedConfiguration
+        requireAll_ (articleDirs `mappend` inGroup Nothing) >>> renderAtom feedConfiguration
     
     -- Fin
     return ()
@@ -180,7 +182,10 @@ routeArticleRaw = routeArticleExt ".txt"
 -- | Article routing with a specific file extension.
 --
 routeArticleExt :: String -> Routes
-routeArticleExt ext = customRoute (flip replaceExtension ext . dropDate)
+routeArticleExt ext = customRoute
+                    $ flip replaceExtension ext
+                    . flip replaceDirectory "articles"
+                    . dropDate
 
 -- | Turn an @Identifier@ into a @FilePath@, dropping the date prefix (e.g.
 -- @\"2011-04-07-\"@) along the way.
