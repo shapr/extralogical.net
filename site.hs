@@ -62,7 +62,7 @@ main = hakyll $ do
     
     -- Plain text versions of articles
     group "raw" $ do
-        match "{articles,drafts}/*" $ do
+        match articleDirs $ do
             route   $ routeArticleRaw
             compile $ readPageCompiler
                 >>> addDefaultFields
