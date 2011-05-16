@@ -18,7 +18,7 @@ recently I picked up a copy of a relatively early book, _The World Jones Made_.
 Last Christmas, a friend kindly bought me the beautiful [Library of America]
 hardbacks, which also included some stories I hadn't read yet.
 
-All in all, I've now read 12 novels, from a total of 44. Here they are in
+All in all, I've now read 13 novels, from a total of 44. Here they are in
 chronological order.
 
 * _The World Jones Made_
@@ -29,6 +29,7 @@ chronological order.
 * _The Simulacra_
 * _Now Wait for Last Year_
 * _The Three Stigmata of Palmer Eldritch_
+* _The Unteleported Man_
 * _Do Androids Dream of Electric Sheep?_
 * _Ubik_
 * _A Maze of Death_
